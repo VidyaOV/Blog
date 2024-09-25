@@ -1,0 +1,32 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+<h1>List Blogs</h1>
+<div class="container mt-5">
+    <div class="card">
+        <h5 class="card-header">Blog List</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Post Title</th>
+                        <th>Author</th>
+                        <th>Created At</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    {% for blog in blogs %}
+                    <tr>
+                        <td><a href="{% url 'blogview' blog.id %}"><strong>{{ blog.title }}</strong> </a></td>
+                        <td>{{ blog.author.username }}</td>
+                        <td>{{ blog.created_at }}</td>
+                        <td><span class="badge bg-label-primary me-1">{{ blog.status }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

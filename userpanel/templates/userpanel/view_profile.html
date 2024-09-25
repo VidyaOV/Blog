@@ -1,0 +1,49 @@
+{% extends 'userpanel/user_base.html' %}
+{% load static %}
+{% block content %}
+<h1>Hello {{ user.username }}</h1>
+<div class="container">
+    <div class="row mt-5 pt-3">
+        <div class="col-md-6 offset-md-3">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <span class="h4">Profile Page</span>
+                    <span>
+                        <a href="{% url 'editprofile' %}" class="btn btn-info float-right btn-sm">
+                            Edit Profile
+                        </a>
+                    </span>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {% if profile.profile_image %}
+                                <img class="img-thumbnail" src="{{ profile.profile_image.url }}" alt="profile-img">
+                            {% else %}
+                                <img class="img-thumbnail" src="{% static 'default_profile_image.jpg' %}" alt="profile-img">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            <h4>Name: {{ user.username }}</h4>
+                            <h4>Email: {{ user.email }} </h4>
+                            <h4>Phone Number: {{ profile.phone_number }}</h4>
+                            {% if profile.id_proof %}
+                               <h4>ID Proof:</h4>
+                               <img class="img-thumbnail" src="{{ profile.id_proof.url }}" alt="ID Proof">
+                            {% else %}
+                               <h4>No ID Proof Provided</h4>
+                            {% endif %}
+                        </div>
+                        <!-- <div class="col-md-4">
+                            {% if profile.id_proof %}
+                                <img class="img-thumbnail" src="{{ profile.id_proof.url }}" alt="profile-img">
+                            {% else %}
+                                <img class="img-thumbnail" src="{% static 'default_profile_image.jpg' %}" alt="profile-img">
+                            {% endif %}
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

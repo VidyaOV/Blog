@@ -1,0 +1,30 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+<h1>Admin home</h1>
+<div class="container mt-5">
+    <div class="row">
+        <!-- Card for Blog List -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Blog List</h5>
+                    <p class="card-text">Manage all blog posts here.</p>
+                    <a href="{% url 'bloglist' %}" class="btn btn-primary">Go to Blog List</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Card for User List -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">User List</h5>
+                    <p class="card-text">Manage all users here.</p>
+                    <a href="{% url 'userlist' %}" class="btn btn-primary">Go to User List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

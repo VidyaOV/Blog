@@ -1,0 +1,29 @@
+{% extends 'userpanel/user_base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1>Your Posts</h1>
+    <div class="row mb-5">
+        {% for blog in blogs %}
+        <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card h-100">
+                {% if blog.blog_image %}
+                <img class="card-img-top" src="{{ blog.blog_image.url }}" alt="Card image cap" />
+                {% else %}
+                <img class="card-img-top" src="{% static 'default_image.jpg' %}" alt="Card image cap" />
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ blog.title }}</h5>
+                    <p class="card-text">
+                        {{ blog.content|truncatewords:30 }}
+                    </p>
+                    <a href="{% url 'viewblog' blog.id %}" class="btn btn-outline-primary">Read more</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No posts yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

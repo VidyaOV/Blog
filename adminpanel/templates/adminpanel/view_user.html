@@ -1,0 +1,62 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-4">
+          <h3 class="card-header">PROFILE DETAILS</h3>
+          <!-- Account -->
+          <div class="card-body">
+            <div class="d-flex align-items-start align-items-sm-center gap-4">
+             
+               {% if profile.profile_image %}
+                    <img src="{{ profile.profile_image.url }}" alt="Profile Image" width="100">
+                {% else %}
+                    No image
+                {% endif %}
+                <div class = button wrapper>
+             
+               
+
+               
+              </div>
+            </div>
+          </div>
+          <h3>Username: {{ user.username }}</h3>
+          <h3>Email: {{ user.email }}</h3>
+          <h3>Phone number: {{ profile.phone_number }}</h3>
+          <h3>Last Name: {{ user.last_name }}</h3>
+           <h3>ID Proof:</h3>
+                {% if profile.id_proof %}
+                    <img src="{{ profile.id_proof.url }}" alt="ID Proof" width="100">
+                {% else %}
+                    No ID proof
+                {% endif %}
+          <!-- Additional fields as per your User model -->
+      </div>
+               
+            
+                
+               
+                
+                
+                
+               
+        
+               
+               
+            
+          <!-- /Account -->
+        </div>
+        
+  </div>
+{% endblock %}
+
+<!-- new disply -->
+
+  <!-- / Content -->

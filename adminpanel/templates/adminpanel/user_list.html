@@ -1,0 +1,28 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+<h1>List users here</h1>
+<div class="container mt-5">
+    <div class="card">
+        <h5 class="card-header">Blog List</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Mail-ID</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                  {% for profile in profiles %}
+                    <tr>
+                      <td><a href="{% url 'viewuser' profile.user.id %}"><strong>{{ profile.user.username }}</strong> </a></td>
+                        <td>{{ profile.user.email }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+{% endblock %}
